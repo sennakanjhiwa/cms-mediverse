@@ -1,6 +1,8 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 import Navbar from "../components/Navbar";
+import Lottie from "lottie-react";
+import doctorAnimation from "../lotties/Animation - 1734271406247.json"; // Sesuaikan path dengan lokasi file Anda
 
 const Login: React.FC = () => {
     return (
@@ -18,11 +20,9 @@ const Login: React.FC = () => {
                         </div>
 
                         {/* Bagian Background */}
-                        <div className="w-1/2 h-5/6 me-6 flex justify-center items-center bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-3xl">
-                            <h2 className="text-4xl font-bold px-8 text-center">
-                                Hi kaka manies 👋<br />
-                                Selamat datang di layanan reservasi online kami
-                            </h2>
+                        <div className="w-1/2 h-5/6 me-6 flex flex-col justify-center items-center bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-3xl">
+                            {/* Animasi Lottie */}
+                            <Lottie animationData={doctorAnimation} loop={true} />
                         </div>
                     </div>
                 </div>
