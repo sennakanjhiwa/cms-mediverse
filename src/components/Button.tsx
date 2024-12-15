@@ -1,15 +1,26 @@
 import React from "react";
 
 type ButtonProps = {
-    label: string;
-    onClick: () => void;
+    label?: string; // Jika hanya menggunakan ikon, label bisa opsional
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void; // Opsional
+    type?: "button" | "submit" | "reset"; // Tambahkan tipe tombol
     variant?: "primary" | "secondary" | "danger";
     size?: "small" | "medium" | "large";
     disabled?: boolean;
-    icon?: React.ReactNode;
+    icon?: React.ReactNode; // Ikon opsional
+    ariaLabel?: string; // Untuk aksesibilitas jika hanya menggunakan ikon
 };
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, variant = "primary", size = "medium", disabled = false, icon }) => {
+const Button: React.FC<ButtonProps> = ({
+    label,
+    onClick,
+    type = "button", // Default type adalah "button"
+    variant = "primary",
+    size = "medium",
+    disabled = false,
+    icon,
+    ariaLabel,
+}) => {
     const baseStyles = "rounded-lg font-semibold flex items-center justify-center";
     const variants = {
         primary: "bg-purple-600 text-white hover:bg-purple-700",
@@ -25,10 +36,14 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, variant = "primary", si
     return (
         <button
             onClick={onClick}
-            className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+            type={type} // Properti type ditambahkan
+            className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${
+                disabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             disabled={disabled}
+            aria-label={ariaLabel || label} // Untuk aksesibilitas
         >
-            {icon && <span className="mr-2">{icon}</span>}
+            {icon && <span className={`${label ? "mr-2" : ""}`}>{icon}</span>}
             {label}
         </button>
     );
