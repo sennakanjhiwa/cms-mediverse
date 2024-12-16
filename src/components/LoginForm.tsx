@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "/home/senna/Documents/refactory/mediverse/cms-mediverse/src/supabaseClient";
+import { supabase } from "../supabaseClient";
 import Button from "./Button";
 import Input from "./Input";
 import { FaEnvelope, FaLock } from "react-icons/fa";
