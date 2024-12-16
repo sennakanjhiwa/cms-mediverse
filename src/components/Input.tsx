@@ -41,7 +41,7 @@ const Input: React.FC<InputProps> = ({
                     required={required}
                     disabled={disabled}
                     autoComplete={autocomplete}
-                    className={`outline-none flex-1 bg-purple-50 ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
+                    className={`outline-none flex-1 w-full bg-purple-50 ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
                 />
             </div>
             {errorMessage && <p className="text-red-500 text-sm mt-1">{errorMessage}</p>}

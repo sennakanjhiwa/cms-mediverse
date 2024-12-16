@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
     };
 
     return (
-        <form onSubmit={handleLogin} className="w-3/5 mx-auto p-6 bg-white shadow rounded-lg border-t-4 border-purple-500">
+        <form onSubmit={handleLogin} className="w-full lg:w-3/5 mx-auto p-6 bg-white shadow rounded-lg border-t-4 border-purple-500">
             <h2 className="text-3xl font-bold mb-3">Selamat Datang</h2>
             <p className="text-lg mb-8 text-slate-600">Masuk dan kelola dashboard Mediverse Anda sekarang</p>
             <Input
