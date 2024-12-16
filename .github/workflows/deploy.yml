@@ -1,0 +1,32 @@
+name: CI/CD Deployment to Vercel
+
+on:
+  push:
+    tags:
+      - "*"  # Memicu pipeline saat ada push Git tag baru
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18 # Sesuaikan dengan versi Node.js proyek Anda
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build # Ganti sesuai perintah build proyek CMS Anda
+
+    - name: Deploy to Vercel
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      run: npx vercel --prod --token $VERCEL_TOKEN
